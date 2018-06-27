@@ -38,7 +38,11 @@ public class Moviedao implements Metodos<Movie>{
             ps.setString(3,g.getPais());
             ps.setString(4,g.getCalisificaion());
             ps.setInt(5,g.getAnio());
-            ps.setBoolean(6, true);
+            ps.setBoolean(6, g.isProyeccion());
+            
+            if(ps.executeUpdate() > 0){
+                   return true;
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             Logger.getLogger(Moviedao.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,11 +82,14 @@ public class Moviedao implements Metodos<Movie>{
             ps.setString(3,c.getPais());
             ps.setString(4,c.getCalisificaion());
             ps.setInt(5,c.getAnio());
-            ps.setBoolean(6, true);
+            ps.setBoolean(6, c.isProyeccion());
             if (ps.executeUpdate() > 0 )
                 return true;
         }catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             Logger.getLogger(Moviedao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            con.cerrarConexion();
         }
         return false;
     }

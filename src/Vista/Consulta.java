@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author LN710Q
  */
-public class Consulta {
+public class Consulta extends JFrame{
     public JLabel lblnombre, lbldirector, lblpais, lblcalificacion,lblanio,lblproyeccion;
     
     public JTextField nombre, director, pais, anio;
@@ -72,7 +72,7 @@ public class Consulta {
         container.add(actualizar);
         container.add(eliminar);
         container.add(table);
-        setSize(600,600);
+        setSize(1000,500);
         eventos();
     }
     
@@ -83,12 +83,12 @@ public class Consulta {
         lblcalificacion = new JLabel("Calificacion");
         lblanio = new JLabel("Año");
         lblproyeccion = new JLabel("En proyeccion");
-        lblnombre.setBounds(10, 10, ANCHOC, ALTOC);
-        lbldirector.setBounds(10,60,ANCHOC,ALTOC);
-        lblpais.setBounds(10,100,ANCHOC,ALTOC);
-        lblcalificacion.setBounds(10,140,ANCHOC,ALTOC);
-        lblanio.setBounds(40, 40, ALTOC, ANCHOC);
-        lblproyeccion.setBounds(40, 90, ALTOC, ANCHOC);
+        lblnombre.setBounds(200, 50, 50, 30);
+        lbldirector.setBounds(200, 90, 60, 30);
+        lblpais.setBounds(220, 130, 50, 30);
+        lblcalificacion.setBounds(540, 50, 80, 30);
+        lblanio.setBounds(590, 90, 50, 30);
+        lblproyeccion.setBounds(532, 130, 90, 30);
     }
     
     public final void formulario(){
@@ -119,20 +119,21 @@ public class Consulta {
         proyeccion.add(si);
         proyeccion.add(no);
         
-        nombre.setBounds(140, 10, ANCHOC, ALTOC);
-        director.setBounds(140, 60, ANCHOC, ALTOC);
-        pais.setBounds(140, 140, ANCHOC, ALTOC);
-        clasificacion.setBounds(140, 220, ALTOC, ANCHOC);
-        anio.setBounds(140, 300, ALTOC, ANCHOC);
-        si.setBounds(140,140,50,ALTOC);
-        no.setBounds(210,140,50,ALTOC);
+        nombre.setBounds(270, 50, ANCHOC, ALTOC);
+        director.setBounds(270, 90, ANCHOC, ALTOC);
+        pais.setBounds(270, 130, ANCHOC, ALTOC);
+        anio.setBounds(640, 90, ANCHOC, ALTOC);
+        si.setBounds(640, 130, 50, ALTOC);
+        no.setBounds(690, 130, 50, ALTOC);
         
-        buscar.setBounds(300, 10, ANCHOC,ALTOC);
-        insertar.setBounds(10, 210, ANCHOC,ALTOC);
-        actualizar.setBounds(150, 210, ANCHOC,ALTOC);
-        eliminar.setBounds(300, 210, ANCHOC,ALTOC);
+        buscar.setBounds(740, 210, ANCHOC,ALTOC);
+        insertar.setBounds(90, 210, ANCHOC,ALTOC);
+        actualizar.setBounds(300, 210, ANCHOC,ALTOC);
+        eliminar.setBounds(530, 210, ANCHOC,ALTOC);
+        clasificacion.setBounds(640, 50, ANCHOC,ALTOC);
         resultados=new JTable();
-        table.setBounds(10, 250, 500,200);
+        resultados.setBounds(0,250,1000,200);
+        table.setBounds(resultados.getBounds());
         table.add(new JScrollPane(resultados));
         
     }
@@ -147,6 +148,10 @@ public class Consulta {
                         return String.class;
                     case 2:
                         return String.class;
+                    case 3:
+                        return String.class;
+                    case 4:
+                        return Integer.class;
                     default:
                         return Boolean.class;
                 }
